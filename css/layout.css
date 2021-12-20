@@ -2,6 +2,15 @@
   display: none !important;
 }
 
+header {
+  background-color: rgb(85, 43, 129);
+  color: white;
+}
+
+body {
+  background-color: rgb(229, 229, 229);
+}
+
 .container {
   max-width: 575px;
   margin: 0 auto;
@@ -16,6 +25,10 @@
 .column-full,
 .column-half {
   width: 100%;
+}
+
+.container-background {
+  background-color: rgb(240, 240, 240);
 }
 
 @media screen and (min-width: 768px) {
