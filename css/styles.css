@@ -35,7 +35,7 @@
 }
 
 .input-mod-entry:hover {
-  border-color: rgb(85, 43, 129);
+  border-color: rgb(34, 50, 65);
 }
 
 .button-wrapper-entry {
@@ -43,7 +43,8 @@
 }
 
 .button-submission-entry {
-  background-color: rgb(85, 43, 129);
+  font-family: "Cormorant SC", serif;
+  background-color: rgb(34, 50, 65);
   color: white;
   margin: 15px 0 25px;
   padding: 10px 18px;
