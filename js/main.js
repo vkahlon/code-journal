@@ -26,3 +26,35 @@ $entryInputDetection.addEventListener('blur', imageGenerator);
 
 var $getInfoFromSubmission = document.querySelector('#get-entry-form');
 $getInfoFromSubmission.addEventListener('submit', retrieveEntryInfo);
+
+function createEntryTree(entry) {
+  var createDivElement = document.createElement('div');
+  createDivElement.setAttribute('data-view', 'entries');
+
+  var createUlElement = document.createElement('ul');
+  createUlElement.setAttribute('class', 'row');
+  createDivElement.appendChild(createUlElement);
+
+  var createLiElement = document.createElement('li');
+  createLiElement.setAttribute('class', 'column-half img-view-entry');
+  createUlElement.appendChild(createLiElement);
+
+  var createImgElement = document.createElement('img');
+  createImgElement.setAttribute('src', 'images/placeholder-image-square.jpg');
+  createLiElement.appendChild(createImgElement);
+
+  var createSecondLiElement = document.createElement('li');
+  createSecondLiElement.setAttribute('class', 'column-half');
+  createUlElement.appendChild(createSecondLiElement);
+
+  var createHeadingELement = document.createElement('h2');
+  createHeadingELement.setAttribute('class', 'view-text-entry');
+  createSecondLiElement.appendChild(createHeadingELement);
+
+  var createParagraphElement = document.createElement('p');
+  createParagraphElement.setAttribute('class', 'view-note-entry');
+  createSecondLiElement.appendChild(createParagraphElement);
+  return createEntryTree;
+}
+createEntryTree();
+// var $theGrandDiv = document.querySelector('.container.container-background');
