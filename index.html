@@ -10,14 +10,61 @@
     crossorigin="anonymous"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya+SC&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <header>
+    <div class="container">
+      <div class="row">
+        <div class="column-full">
+          <h1 class="navbar-text">Code Journal</h1>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
+    <div class="container container-background">
+      <div class="row">
+        <div class="column-full">
+          <h2 class="new-text-entry" data-view="entry-form">New Entry</h2>
+        </div>
+      </div>
+      <form id="get-entry-form" data-view="entry-form">
+        <div class="row">
+          <div class="column-half img-entry">
+            <img src="images/placeholder-image-square.jpg" alt="placeholder-img" id="url-value">
+          </div>
+          <div class="column-half">
+            <label for="entry-title" class="label-header-entry">Title</label>
+            <input type="text" class="input-mod-entry" id="entry-title" name="title" minlength="1" maxlength="50" size="70">
+
+            <label for="photoURL" class="label-header-entry">Photo URL</label>
+            <input type="url" class="input-mod-entry" id="photoURL" name="url" minlength="1" maxlength="200" size="70">
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <label for="message-entry" class="label-header-entry message-wrapper">Notes</label>
+            <textarea name="message-entry" id="message" cols="96" rows="6" class="input-mod-entry"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <div class="row button-wrapper-entry">
+              <button type="submit" class="button-submission-entry" id="submit" name="submit" value="Save">SAVE</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

@@ -2,6 +2,20 @@
   display: none !important;
 }
 
+header {
+  font-family: "Cormorant SC", serif;
+  background-color: rgb(34, 50, 65);
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+body {
+  background-color: rgb(229, 229, 229);
+  font-family: "Alegreya SC", serif;
+  font-weight: 400;
+}
+
 .container {
   max-width: 575px;
   margin: 0 auto;
@@ -16,6 +30,10 @@
 .column-full,
 .column-half {
   width: 100%;
+}
+
+.container-background {
+  background-color: rgb(240, 240, 240);
 }
 
 @media screen and (min-width: 768px) {
