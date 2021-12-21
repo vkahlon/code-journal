@@ -1,6 +1,5 @@
 /* global data */
 /* exported data */
-var nextEntryID = 1;
 function imageGenerator(event) {
   event.preventDefault();
   $setImageURL.setAttribute('src', event.target.value);
@@ -15,7 +14,12 @@ function retrieveEntryInfo(event) {
   entryInfo.title = titleValue;
   entryInfo.url = urlValue;
   entryInfo.message = messageValue;
-  entryInfo.nextEntryID = nextEntryID++;
+  entryInfo.entryID = data.nextEntryId;
+  data.nextEntryId++;
+  data.entries.unshift(entryInfo);
+  event.preventDefault();
+  $setImageURL.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $getInfoFromSubmission.reset();
 }
 var $setImageURL = document.querySelector('#url-value');
 var $entryInputDetection = document.querySelector('#photoURL');
