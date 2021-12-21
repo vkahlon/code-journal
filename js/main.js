@@ -1,7 +1,7 @@
 /* global data */
 /* exported data */
+
 function imageGenerator(event) {
-  event.preventDefault();
   $setImageURL.setAttribute('src', event.target.value);
 }
 
@@ -17,7 +17,6 @@ function retrieveEntryInfo(event) {
   entryInfo.entryID = data.nextEntryId;
   data.nextEntryId++;
   data.entries.unshift(entryInfo);
-  event.preventDefault();
   $setImageURL.setAttribute('src', 'images/placeholder-image-square.jpg');
   $getInfoFromSubmission.reset();
 }

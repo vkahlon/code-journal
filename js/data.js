@@ -8,10 +8,10 @@ var data = {
 };
 window.addEventListener('beforeunload', retrieveData);
 var previousEntriesJSON = localStorage.getItem('total-entries');
-if (previousEntriesJSON != null) {
-  data.entries = JSON.parse(previousEntriesJSON);
+if (previousEntriesJSON !== null) {
+  data = JSON.parse(previousEntriesJSON);
 }
 function retrieveData(event) {
-  var entriesJSON = JSON.stringify(data.entries);
-  localStorage.setItem('total-entries', entriesJSON);
+  var dataJSON = JSON.stringify(data);
+  localStorage.setItem('total-entries', dataJSON);
 }
