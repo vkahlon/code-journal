@@ -47,3 +47,29 @@
   border-radius: 5px;
   font-size: medium;
 }
+
+/* View Entry */
+.img-view-entry > img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.view-text-entry {
+  font-size: xx-large;
+  font-weight: bolder;
+  width: 100%;
+}
+
+.view-note-entry {
+  font-weight: 500;
+  width: 100%;
+}
+
+li,
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
