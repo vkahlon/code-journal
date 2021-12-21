@@ -11,7 +11,7 @@
 }
 
 .label-header-entry {
-  font-weight: bold;
+  font-weight: 500;
   margin-left: 2px;
   flex-direction: column;
   width: 100%;
