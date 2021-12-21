@@ -33,29 +33,29 @@
           <h2 class="new-text-entry" data-view="entry-form">New Entry</h2>
         </div>
       </div>
-      <form action="" method="get" data-view="entry-form">
+      <form id="get-entry-form" data-view="entry-form">
         <div class="row">
           <div class="column-half img-entry">
             <img src="images/placeholder-image-square.jpg" alt="placeholder-img" id="url-value">
           </div>
           <div class="column-half">
-            <label for="title" class="row label-header-entry">Title</label>
-            <input type="text" class="input-mod-entry" id="title" name="title" minlength="1" maxlength="50" size="70">
-            <label for="photoURL" class="row label-header-entry">Photo URL</label>
-            <input type="url" class="input-mod-entry" id="url" name="url" minlength="1" maxlength="100" size="70">
+            <label for="entry-title" class="row label-header-entry">Title</label>
+            <input type="text" class="input-mod-entry" id="entry-title" name="title" minlength="1" maxlength="50" size="70">
 
+            <label for="photoURL" class="row label-header-entry">Photo URL</label>
+            <input type="url" class="input-mod-entry" id="photoURL" name="url" minlength="1" maxlength="200" size="70">
           </div>
         </div>
         <div class="row">
           <div class="col-full">
             <label for="message-entry" class="row label-header-entry">Notes</label>
-            <textarea name="message-entry" id="message-entry" cols="105" rows="6" class="input-mod-entry"></textarea>
+            <textarea name="message-entry" id="message" cols="105" rows="6" class="input-mod-entry"></textarea>
           </div>
         </div>
         <div class="row">
           <div class="column-full">
             <div class="row button-wrapper-entry">
-              <input type="submit" class="button-submission-entry" id="submit" name="submit" value="Save">
+              <button type="submit" class="button-submission-entry" id="submit" name="submit" value="Save">SAVE</button>
             </div>
           </div>
         </div>
