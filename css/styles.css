@@ -13,14 +13,13 @@
 .label-header-entry {
   font-weight: 500;
   margin-left: 2px;
-  flex-direction: column;
   width: 100%;
   margin-top: 4px;
   padding-bottom: 10px;
 }
 
 .input-mod-entry {
-  padding: 5px 0 5px 2px;
+  padding: 5px 0;
   border: 1.5px solid;
   border-color: rgb(182, 182, 182);
   box-shadow: none;
@@ -28,10 +27,6 @@
   width: 100%;
   margin-bottom: 13px;
   outline: none;
-}
-
-.message-entry {
-  width: 100%;
 }
 
 .input-mod-entry:hover {
