@@ -7,11 +7,13 @@ header {
   background-color: rgb(34, 50, 65);
   color: white;
   font-size: 12px;
+  font-weight: 800;
 }
 
 body {
   background-color: rgb(229, 229, 229);
   font-family: "Alegreya SC", serif;
+  font-weight: 400;
 }
 
 .container {
