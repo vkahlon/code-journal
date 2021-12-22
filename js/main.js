@@ -40,7 +40,7 @@ function createEntryTree(entry) {
   createUlElement.appendChild(createLiElement);
 
   var createImgElement = document.createElement('img');
-  createImgElement.setAttribute('src', 'images/placeholder-image-square.jpg');
+  createImgElement.setAttribute('src', entry.url);
   createLiElement.appendChild(createImgElement);
 
   var createSecondLiElement = document.createElement('li');
@@ -49,12 +49,20 @@ function createEntryTree(entry) {
 
   var createHeadingELement = document.createElement('h2');
   createHeadingELement.setAttribute('class', 'view-text-entry');
+  createHeadingELement.textContent = entry.title;
   createSecondLiElement.appendChild(createHeadingELement);
 
   var createParagraphElement = document.createElement('p');
   createParagraphElement.setAttribute('class', 'view-note-entry');
+  createParagraphElement.textContent = entry.message;
   createSecondLiElement.appendChild(createParagraphElement);
-  return createEntryTree;
+  return createDivElement;
 }
-createEntryTree();
-// var $theGrandDiv = document.querySelector('.container.container-background');
+window.addEventListener('DOMContentLoaded', createTheJournal);
+function createTheJournal(event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    var $theGrandDiv = document.querySelector('.container-background');
+    var newEntry = createEntryTree(data.entries[i]);
+    $theGrandDiv.appendChild(newEntry);
+  }
+}
