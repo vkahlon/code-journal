@@ -66,3 +66,18 @@ function createTheJournal(event) {
     $theGrandDiv.appendChild(newEntry);
   }
 }
+// Hiding and activating when hitting new entry//
+function goBackToHomePage(event) {
+  switchViews('entry-form');
+}
+function switchViews(view) {
+  for (var i = 0; i < $views.length; i++) {
+
+    $views[i].className = 'row hidden';
+  }
+}
+var $views = document.querySelectorAll('div[data-view]');
+var $newButtonSelector = document.querySelector('.button-new-entry');
+var $newBackToHomePage = document.querySelector('.view-entry-only-page');
+$newBackToHomePage.addEventListener('click', goBackToHomePage);
+$newButtonSelector.addEventListener('click', switchViews);
