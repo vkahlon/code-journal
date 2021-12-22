@@ -1,3 +1,23 @@
+.new-entry-wrapper {
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.text-entries {
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+.button-new-entry {
+  margin-top: 10px;
+  font-family: "Cormorant SC", serif;
+  background-color: rgb(34, 50, 65);
+  color: white;
+  padding: 8px 13px;
+  border-radius: 5px;
+  font-size: medium;
+}
+
 .new-text-entry {
   font-size: xx-large;
   font-weight: bolder;
