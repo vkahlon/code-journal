@@ -34,7 +34,7 @@
     </div>
   </header>
   <main>
-    <div class="container container-background">
+    <div class="container container-background" data-view="entry-form">
       <div class="row">
         <div class="column-full">
           <div class="row new-entry-wrapper">
@@ -48,8 +48,8 @@
           <h2 class="new-text-entry" data-view="entry-form">New Entry</h2>
         </div>
       </div>
-      <form id="get-entry-form" data-view="entry-form">
-        <div class="row hidden">
+      <form id="get-entry-form" data-view="entry-form" class="hidden view-container">
+        <div class="row">
           <div class="column-half img-entry">
             <img src="images/placeholder-image-square.jpg" alt="placeholder-img" id="url-value">
           </div>
@@ -61,13 +61,13 @@
             <input type="url" class="input-mod-entry" id="photoURL" name="url" minlength="1" maxlength="200" size="70">
           </div>
         </div>
-        <div class="row hidden">
+        <div class="row">
           <div class="column-full">
             <label for="message-entry" class="label-header-entry message-wrapper">Notes</label>
             <textarea name="message-entry" id="message" cols="96" rows="6" class="input-mod-entry"></textarea>
           </div>
         </div>
-        <div class="row hidden">
+        <div class="row">
           <div class="column-full">
             <div class="row button-wrapper-entry">
               <button type="submit" class="button-submission-entry" id="submit" name="submit" value="Save">SAVE</button>
@@ -75,8 +75,10 @@
           </div>
         </div>
       </form>
-    </div>
+      <div class="entry-render view-container" data-view="entries">
 
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

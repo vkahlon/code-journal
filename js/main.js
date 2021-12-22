@@ -61,23 +61,32 @@ function createEntryTree(entry) {
 window.addEventListener('DOMContentLoaded', createTheJournal);
 function createTheJournal(event) {
   for (var i = 0; i < data.entries.length; i++) {
-    var $theGrandDiv = document.querySelector('.container-background');
+    var $theGrandDiv = document.querySelector('.entry-render');
     var newEntry = createEntryTree(data.entries[i]);
     $theGrandDiv.appendChild(newEntry);
   }
 }
 // Hiding and activating when hitting new entry//
 function goBackToHomePage(event) {
+  switchViews('entries');
+}
+function goToEntryPage(event) {
   switchViews('entry-form');
+
 }
 function switchViews(view) {
-  for (var i = 0; i < $views.length; i++) {
-
-    $views[i].className = 'row hidden';
+  for (var index = 0; index < $views.length; index++) {
+    if ($views[index].getAttribute('data-view') === view) {
+      $views[index].classList.remove('hidden');
+    } else {
+      $views[index].classList.add('hidden');
+    }
   }
 }
-var $views = document.querySelectorAll('div[data-view]');
+// var $selectEntries = document.querySelectorAll('div[data-view]');
+var $views = document.querySelectorAll('.view-container');
 var $newButtonSelector = document.querySelector('.button-new-entry');
 var $newBackToHomePage = document.querySelector('.view-entry-only-page');
+
+$newButtonSelector.addEventListener('click', goToEntryPage);
 $newBackToHomePage.addEventListener('click', goBackToHomePage);
-$newButtonSelector.addEventListener('click', switchViews);
