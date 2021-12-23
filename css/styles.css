@@ -103,3 +103,8 @@ ul {
   text-align: center;
   font-size: x-large;
 }
+
+.fa-pencil-alt {
+  color: rgb(34, 50, 65);
+  font-size: 20px;
+}

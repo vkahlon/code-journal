@@ -34,6 +34,7 @@ $getInfoFromSubmission.addEventListener('submit', retrieveEntryInfo);
 function createEntryTree(entry) {
   var createLiElement = document.createElement('li');
   createLiElement.setAttribute('class', 'row');
+  createLiElement.setAttribute('data-view', entry.entryID);
 
   var createDivElement = document.createElement('div');
   createDivElement.setAttribute('class', 'column-half img-view-entry');
@@ -47,10 +48,14 @@ function createEntryTree(entry) {
   createDivTwoElement.setAttribute('class', 'column-half');
   createLiElement.appendChild(createDivTwoElement);
 
-  var createHeadingELement = document.createElement('h2');
-  createHeadingELement.setAttribute('class', 'view-text-entry');
-  createHeadingELement.textContent = entry.title;
-  createDivTwoElement.appendChild(createHeadingELement);
+  var createHeadingElement = document.createElement('span');
+  createHeadingElement.setAttribute('class', 'view-text-entry');
+  createHeadingElement.textContent = entry.title;
+  createDivTwoElement.appendChild(createHeadingElement);
+
+  var createEditIcon = document.createElement('i');
+  createEditIcon.setAttribute('class', 'fas fa-pencil-alt');
+  createDivTwoElement.appendChild(createEditIcon);
 
   var createParagraphElement = document.createElement('p');
   createParagraphElement.setAttribute('class', 'view-note-entry');
@@ -91,7 +96,7 @@ function switchViews(view) {
     }
   }
 }
-// var $selectEntries = document.querySelectorAll('div[data-view]');
+// var $selectEntries = document.querySelectorAll('li[data-view]');
 var $selectParagraph = document.querySelector('.paragraph-intro');
 var $views = document.querySelectorAll('.view-container');
 var $newButtonSelector = document.querySelector('.button-new-entry');
