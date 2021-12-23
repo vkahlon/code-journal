@@ -33,15 +33,11 @@ $getInfoFromSubmission.addEventListener('submit', retrieveEntryInfo);
 
 function createEntryTree(entry) {
   var createDivElement = document.createElement('div');
-  createDivElement.setAttribute('data-view', 'entries');
-
-  var createUlElement = document.createElement('ul');
-  createUlElement.setAttribute('class', 'row');
-  createDivElement.appendChild(createUlElement);
+  createDivElement.setAttribute('class', 'row');
 
   var createLiElement = document.createElement('li');
   createLiElement.setAttribute('class', 'column-half img-view-entry');
-  createUlElement.appendChild(createLiElement);
+  createDivElement.appendChild(createLiElement);
 
   var createImgElement = document.createElement('img');
   createImgElement.setAttribute('src', entry.url);
@@ -49,7 +45,7 @@ function createEntryTree(entry) {
 
   var createSecondLiElement = document.createElement('li');
   createSecondLiElement.setAttribute('class', 'column-half');
-  createUlElement.appendChild(createSecondLiElement);
+  createDivElement.appendChild(createSecondLiElement);
 
   var createHeadingELement = document.createElement('h2');
   createHeadingELement.setAttribute('class', 'view-text-entry');
