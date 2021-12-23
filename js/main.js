@@ -17,12 +17,84 @@ function retrieveEntryInfo(event) {
   entryInfo.entryID = data.nextEntryId;
   data.nextEntryId++;
   data.entries.unshift(entryInfo);
+  displayInSessionEntry(entryInfo);
   $setImageURL.setAttribute('src', 'images/placeholder-image-square.jpg');
   $getInfoFromSubmission.reset();
+  $selectParagraph.classList.add('hidden');
+  switchViews('entries');
 }
+
 var $setImageURL = document.querySelector('#url-value');
 var $entryInputDetection = document.querySelector('#photoURL');
 $entryInputDetection.addEventListener('blur', imageGenerator);
 
 var $getInfoFromSubmission = document.querySelector('#get-entry-form');
 $getInfoFromSubmission.addEventListener('submit', retrieveEntryInfo);
+
+function createEntryTree(entry) {
+  var createLiElement = document.createElement('li');
+  createLiElement.setAttribute('class', 'row');
+
+  var createDivElement = document.createElement('div');
+  createDivElement.setAttribute('class', 'column-half img-view-entry');
+  createLiElement.appendChild(createDivElement);
+
+  var createImgElement = document.createElement('img');
+  createImgElement.setAttribute('src', entry.url);
+  createDivElement.appendChild(createImgElement);
+
+  var createDivTwoElement = document.createElement('div');
+  createDivTwoElement.setAttribute('class', 'column-half');
+  createLiElement.appendChild(createDivTwoElement);
+
+  var createHeadingELement = document.createElement('h2');
+  createHeadingELement.setAttribute('class', 'view-text-entry');
+  createHeadingELement.textContent = entry.title;
+  createDivTwoElement.appendChild(createHeadingELement);
+
+  var createParagraphElement = document.createElement('p');
+  createParagraphElement.setAttribute('class', 'view-note-entry');
+  createParagraphElement.textContent = entry.message;
+  createDivTwoElement.appendChild(createParagraphElement);
+  return createLiElement;
+}
+function displayInSessionEntry(object) {
+  var $theGrandDivInSession = document.querySelector('ul');
+  var sessionEntry = createEntryTree(object);
+  $theGrandDivInSession.prepend(sessionEntry);
+}
+window.addEventListener('DOMContentLoaded', createTheJournal);
+function createTheJournal(event) {
+  if (data.entries.length !== 0) {
+    $selectParagraph.classList.add('hidden');
+  }
+  for (var i = 0; i < data.entries.length; i++) {
+    var $theGrandDiv = document.querySelector('.entry-render');
+    var newEntry = createEntryTree(data.entries[i]);
+    $theGrandDiv.appendChild(newEntry);
+  }
+}
+// Hiding and activating when hitting new entry//
+function goBackToHomePage(event) {
+  switchViews('entries');
+}
+function goToEntryPage(event) {
+  switchViews('entry-form');
+
+}
+function switchViews(view) {
+  for (var index = 0; index < $views.length; index++) {
+    if ($views[index].getAttribute('data-view') === view) {
+      $views[index].classList.remove('hidden');
+    } else {
+      $views[index].classList.add('hidden');
+    }
+  }
+}
+// var $selectEntries = document.querySelectorAll('div[data-view]');
+var $selectParagraph = document.querySelector('.paragraph-intro');
+var $views = document.querySelectorAll('.view-container');
+var $newButtonSelector = document.querySelector('.button-new-entry');
+var $newBackToHomePage = document.querySelector('.view-entry-only-page');
+$newButtonSelector.addEventListener('click', goToEntryPage);
+$newBackToHomePage.addEventListener('click', goBackToHomePage);

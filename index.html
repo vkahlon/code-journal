@@ -25,19 +25,30 @@
     <div class="container">
       <div class="row">
         <div class="column-full">
-          <h1 class="navbar-text">Code Journal</h1>
+          <div class="row navbar">
+            <h1 class="navbar-text">Code Journal</h1>
+            <a class="view-entry-only-page"><h2 class="navbar-text">Entries</h2></a>
+          </div>
         </div>
       </div>
     </div>
   </header>
   <main>
-    <div class="container container-background">
+    <div class="container container-background" data-view="entry-form">
       <div class="row">
+        <div class="column-full">
+          <div class="row new-entry-wrapper">
+            <span class="text-entries">Entries</span>
+            <button class="button-new-entry">NEW</button>
+          </div>
+        </div>
+      </div>
+      <div class="row hidden">
         <div class="column-full">
           <h2 class="new-text-entry" data-view="entry-form">New Entry</h2>
         </div>
       </div>
-      <form id="get-entry-form" data-view="entry-form">
+      <form id="get-entry-form" data-view="entry-form" class="hidden view-container">
         <div class="row">
           <div class="column-half img-entry">
             <img src="images/placeholder-image-square.jpg" alt="placeholder-img" id="url-value">
@@ -64,6 +75,8 @@
           </div>
         </div>
       </form>
+      <ul class="entry-render view-container" data-view="entries"></ul>
+      <p class="paragraph-intro">You Have No Entries...</p>
     </div>
   </main>
   <script src="js/data.js"></script>
