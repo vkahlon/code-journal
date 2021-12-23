@@ -63,9 +63,9 @@ function createEntryTree(entry) {
   return createDivElement;
 }
 function displayInSessionEntry(object) {
-  var $theGrandDivTemp = document.querySelector('.session-prepend-only');
+  var $theGrandDivInSession = document.querySelector('ul');
   var sessionEntry = createEntryTree(object);
-  $theGrandDivTemp.appendChild(sessionEntry);
+  $theGrandDivInSession.prepend(sessionEntry);
 }
 window.addEventListener('DOMContentLoaded', createTheJournal);
 function createTheJournal(event) {
