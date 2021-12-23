@@ -17,7 +17,7 @@ function retrieveEntryInfo(event) {
   entryInfo.entryID = data.nextEntryId;
   data.nextEntryId++;
   data.entries.unshift(entryInfo);
-  createTempJournal(entryInfo);
+  displayInSessionEntry(entryInfo);
   $setImageURL.setAttribute('src', 'images/placeholder-image-square.jpg');
   $getInfoFromSubmission.reset();
   $selectParagraph.classList.add('hidden');
@@ -62,7 +62,7 @@ function createEntryTree(entry) {
   createSecondLiElement.appendChild(createParagraphElement);
   return createDivElement;
 }
-function createTempJournal(object) {
+function displayInSessionEntry(object) {
   var $theGrandDivTemp = document.querySelector('.temp-entry');
   var tempEntry = createEntryTree(object);
   $theGrandDivTemp.appendChild(tempEntry);
