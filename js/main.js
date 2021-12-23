@@ -20,8 +20,10 @@ function retrieveEntryInfo(event) {
   createTempJournal(entryInfo);
   $setImageURL.setAttribute('src', 'images/placeholder-image-square.jpg');
   $getInfoFromSubmission.reset();
+  $selectParagraph.classList.add('hidden');
   switchViews('entries');
 }
+
 var $setImageURL = document.querySelector('#url-value');
 var $entryInputDetection = document.querySelector('#photoURL');
 $entryInputDetection.addEventListener('blur', imageGenerator);
@@ -61,12 +63,15 @@ function createEntryTree(entry) {
   return createDivElement;
 }
 function createTempJournal(object) {
-  var $theGrandDiv = document.querySelector('.temp-entry');
+  var $theGrandDivTemp = document.querySelector('.temp-entry');
   var tempEntry = createEntryTree(object);
-  $theGrandDiv.appendChild(tempEntry);
+  $theGrandDivTemp.appendChild(tempEntry);
 }
 window.addEventListener('DOMContentLoaded', createTheJournal);
 function createTheJournal(event) {
+  if (data.entries.length !== 0) {
+    $selectParagraph.classList.add('hidden');
+  }
   for (var i = 0; i < data.entries.length; i++) {
     var $theGrandDiv = document.querySelector('.entry-render');
     var newEntry = createEntryTree(data.entries[i]);
@@ -91,9 +96,9 @@ function switchViews(view) {
   }
 }
 // var $selectEntries = document.querySelectorAll('div[data-view]');
+var $selectParagraph = document.querySelector('.paragraph-intro');
 var $views = document.querySelectorAll('.view-container');
 var $newButtonSelector = document.querySelector('.button-new-entry');
 var $newBackToHomePage = document.querySelector('.view-entry-only-page');
-
 $newButtonSelector.addEventListener('click', goToEntryPage);
 $newBackToHomePage.addEventListener('click', goBackToHomePage);
