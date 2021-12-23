@@ -32,31 +32,31 @@ var $getInfoFromSubmission = document.querySelector('#get-entry-form');
 $getInfoFromSubmission.addEventListener('submit', retrieveEntryInfo);
 
 function createEntryTree(entry) {
-  var createDivElement = document.createElement('div');
-  createDivElement.setAttribute('class', 'row');
-
   var createLiElement = document.createElement('li');
-  createLiElement.setAttribute('class', 'column-half img-view-entry');
-  createDivElement.appendChild(createLiElement);
+  createLiElement.setAttribute('class', 'row');
+
+  var createDivElement = document.createElement('div');
+  createDivElement.setAttribute('class', 'column-half img-view-entry');
+  createLiElement.appendChild(createDivElement);
 
   var createImgElement = document.createElement('img');
   createImgElement.setAttribute('src', entry.url);
-  createLiElement.appendChild(createImgElement);
+  createDivElement.appendChild(createImgElement);
 
-  var createSecondLiElement = document.createElement('li');
-  createSecondLiElement.setAttribute('class', 'column-half');
-  createDivElement.appendChild(createSecondLiElement);
+  var createDivTwoElement = document.createElement('div');
+  createDivTwoElement.setAttribute('class', 'column-half');
+  createLiElement.appendChild(createDivTwoElement);
 
   var createHeadingELement = document.createElement('h2');
   createHeadingELement.setAttribute('class', 'view-text-entry');
   createHeadingELement.textContent = entry.title;
-  createSecondLiElement.appendChild(createHeadingELement);
+  createDivTwoElement.appendChild(createHeadingELement);
 
   var createParagraphElement = document.createElement('p');
   createParagraphElement.setAttribute('class', 'view-note-entry');
   createParagraphElement.textContent = entry.message;
-  createSecondLiElement.appendChild(createParagraphElement);
-  return createDivElement;
+  createDivTwoElement.appendChild(createParagraphElement);
+  return createLiElement;
 }
 function displayInSessionEntry(object) {
   var $theGrandDivInSession = document.querySelector('ul');
