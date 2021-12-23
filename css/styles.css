@@ -105,6 +105,11 @@ ul {
 }
 
 .fa-pencil-alt {
+  margin-top: 1rem;
   color: rgb(34, 50, 65);
   font-size: 20px;
+}
+
+.edit-icon-wrapper {
+  flex-wrap: nowrap;
 }

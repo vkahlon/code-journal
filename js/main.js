@@ -48,14 +48,18 @@ function createEntryTree(entry) {
   createDivTwoElement.setAttribute('class', 'column-half');
   createLiElement.appendChild(createDivTwoElement);
 
+  var createDedicatedFormatDiv = document.createElement('div');
+  createDedicatedFormatDiv.setAttribute('class', 'row edit-icon-wrapper');
+  createDivTwoElement.appendChild(createDedicatedFormatDiv);
+
   var createHeadingElement = document.createElement('span');
   createHeadingElement.setAttribute('class', 'view-text-entry');
   createHeadingElement.textContent = entry.title;
-  createDivTwoElement.appendChild(createHeadingElement);
+  createDedicatedFormatDiv.appendChild(createHeadingElement);
 
   var createEditIcon = document.createElement('i');
   createEditIcon.setAttribute('class', 'fas fa-pencil-alt');
-  createDivTwoElement.appendChild(createEditIcon);
+  createDedicatedFormatDiv.appendChild(createEditIcon);
 
   var createParagraphElement = document.createElement('p');
   createParagraphElement.setAttribute('class', 'view-note-entry');
@@ -96,7 +100,24 @@ function switchViews(view) {
     }
   }
 }
-// var $selectEntries = document.querySelectorAll('li[data-view]');
+function editEntry(event) {
+  var $selectEntries = document.querySelectorAll('li');
+  if (event.target.tagName === 'I') {
+    var $closestIdiom = event.target.closest('LI');
+    $closestIdiom = $closestIdiom.getAttribute('data-view');
+    for (var i = 0; i < $selectEntries.length; i++) {
+      var retrieveCorrectList = $selectEntries[i].getAttribute('data-view');
+      if (retrieveCorrectList === $closestIdiom) {
+        return;
+      }
+    }
+  }
+}
+
+var $awaitClicks = document.querySelector('ul');
+$awaitClicks.addEventListener('click', editEntry);
+// var $editEntry = document.querySelectorAll('fa-pencil-alt');
+
 var $selectParagraph = document.querySelector('.paragraph-intro');
 var $views = document.querySelectorAll('.view-container');
 var $newButtonSelector = document.querySelector('.button-new-entry');
