@@ -1,27 +1,44 @@
 /* global data */
 /* exported data */
-
 function imageGenerator(event) {
   $setImageURL.setAttribute('src', event.target.value);
 }
 
 function retrieveEntryInfo(event) {
-  var entryInfo = {};
   event.preventDefault();
-  var titleValue = $getInfoFromSubmission.elements.title.value;
-  var urlValue = $getInfoFromSubmission.elements.url.value;
-  var messageValue = $getInfoFromSubmission.elements.message.value;
-  entryInfo.title = titleValue;
-  entryInfo.url = urlValue;
-  entryInfo.message = messageValue;
-  entryInfo.entryID = data.nextEntryId;
-  data.nextEntryId++;
-  data.entries.unshift(entryInfo);
-  displayInSessionEntry(entryInfo);
-  $setImageURL.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $getInfoFromSubmission.reset();
-  $selectParagraph.classList.add('hidden');
-  switchViews('entries');
+  if (data.editing === null) {
+    var entryInfo = {};
+    var titleValue = $getInfoFromSubmission.elements.title.value;
+    var urlValue = $getInfoFromSubmission.elements.url.value;
+    var messageValue = $getInfoFromSubmission.elements.message.value;
+    entryInfo.title = titleValue;
+    entryInfo.url = urlValue;
+    entryInfo.message = messageValue;
+    entryInfo.entryID = data.nextEntryId;
+    data.nextEntryId++;
+    data.entries.unshift(entryInfo);
+    displayInSessionEntry(entryInfo);
+    $setImageURL.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $getInfoFromSubmission.reset();
+    $selectParagraph.classList.add('hidden');
+    switchViews('entries');
+  } else {
+    var editEntryInfo = {};
+    var editedTitleValue = $getInfoFromSubmission.elements.title.value;
+    var editedUrlValue = $getInfoFromSubmission.elements.url.value;
+    var editedMessageValue = $getInfoFromSubmission.elements.message.value;
+    var grabTheEntryValue = data.editing;
+    editEntryInfo.title = editedTitleValue;
+    editEntryInfo.url = editedUrlValue;
+    editEntryInfo.message = editedMessageValue;
+    editEntryInfo.entryID = grabTheEntryValue;
+    // var $selectEntries = document.querySelectorAll('li');
+
+    data.editing = null;
+    // $setImageURL.setAttribute('src', 'images/placeholder-image-square.jpg');
+    // $getInfoFromSubmission.reset();
+    // switchViews('entries');
+  }
 }
 
 var $setImageURL = document.querySelector('#url-value');
@@ -83,7 +100,6 @@ function createTheJournal(event) {
     $theGrandDiv.appendChild(newEntry);
   }
 }
-// Hiding and activating when hitting new entry//
 function goBackToHomePage(event) {
   switchViews('entries');
 }
@@ -99,6 +115,7 @@ function switchViews(view) {
     }
   }
 }
+// For Editing
 function clickEntry(event) {
   var $selectEntries = document.querySelectorAll('li');
   if (event.target.tagName === 'I') {
@@ -108,7 +125,6 @@ function clickEntry(event) {
       var retrieveCorrectList = $selectEntries[i].getAttribute('data-view');
       if (retrieveCorrectList === $closestIdiom) {
         var editObject = data.entries[i];
-        // console.log(editObject);
         editEntry(editObject);
         switchViews('entry-form');
       }
@@ -119,15 +135,13 @@ function editEntry(object) {
   var $modifyHeader = document.querySelector('.new-text-entry');
   $modifyHeader.textContent = 'Edit Entry';
   $setImageURL.setAttribute('src', object.url);
-
   var $getTitle = document.querySelector('#entry-title');
   $getTitle.setAttribute('value', object.title);
-
   var $getURL = document.querySelector('#photoURL');
   $getURL.setAttribute('value', object.url);
-
   var $getParagraph = document.querySelector('#message');
   $getParagraph.textContent = object.message;
+  data.editing = object.entryID;
 }
 
 var $awaitClicks = document.querySelector('ul');
