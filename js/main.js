@@ -18,10 +18,7 @@ function retrieveEntryInfo(event) {
     data.nextEntryId++;
     data.entries.unshift(entryInfo);
     displayInSessionEntry(entryInfo);
-    $setImageURL.setAttribute('src', 'images/placeholder-image-square.jpg');
-    $getInfoFromSubmission.reset();
     $selectParagraph.classList.add('hidden');
-    switchViews('entries');
   } else {
     var editEntryInfo = {};
     var editedTitleValue = $getInfoFromSubmission.elements.title.value;
@@ -32,13 +29,20 @@ function retrieveEntryInfo(event) {
     editEntryInfo.url = editedUrlValue;
     editEntryInfo.message = editedMessageValue;
     editEntryInfo.entryID = grabTheEntryValue;
-    // var $selectEntries = document.querySelectorAll('li');
-
+    var $selectEntries = document.querySelectorAll('li');
+    var createReplacementObject = createEntryTree(editEntryInfo);
+    for (var index = 0; index < data.entries.length; index++) {
+      var convertEntrytoString = String(grabTheEntryValue);
+      var retrieveCorrectList = $selectEntries[index].getAttribute('data-view');
+      if (convertEntrytoString === retrieveCorrectList) {
+        $selectEntries[index].replaceWith(createReplacementObject);
+        data.entries[index] = editEntryInfo;
+      }
+    }
     data.editing = null;
-    // $setImageURL.setAttribute('src', 'images/placeholder-image-square.jpg');
-    // $getInfoFromSubmission.reset();
-    // switchViews('entries');
   }
+  resetFormToDefault();
+  switchViews('entries');
 }
 
 var $setImageURL = document.querySelector('#url-value');
@@ -101,6 +105,7 @@ function createTheJournal(event) {
   }
 }
 function goBackToHomePage(event) {
+  resetFormToDefault();
   switchViews('entries');
 }
 function goToEntryPage(event) {
@@ -132,25 +137,32 @@ function clickEntry(event) {
   }
 }
 function editEntry(object) {
-  var $modifyHeader = document.querySelector('.new-text-entry');
   $modifyHeader.textContent = 'Edit Entry';
   $setImageURL.setAttribute('src', object.url);
-  var $getTitle = document.querySelector('#entry-title');
-  $getTitle.setAttribute('value', object.title);
-  var $getURL = document.querySelector('#photoURL');
-  $getURL.setAttribute('value', object.url);
-  var $getParagraph = document.querySelector('#message');
-  $getParagraph.textContent = object.message;
+  $modTitle.setAttribute('value', object.title);
+  $modURL.setAttribute('value', object.url);
+  $modParagraph.textContent = object.message;
   data.editing = object.entryID;
+}
+
+function resetFormToDefault(event) {
+  $setImageURL.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $modifyHeader.textContent = 'New Entry';
+  $modTitle.setAttribute('value', '');
+  $modURL.setAttribute('value', '');
+  $modParagraph.textContent = '';
 }
 
 var $awaitClicks = document.querySelector('ul');
 $awaitClicks.addEventListener('click', clickEntry);
-// var $editEntry = document.querySelectorAll('fa-pencil-alt');
-
 var $selectParagraph = document.querySelector('.paragraph-intro');
 var $views = document.querySelectorAll('.view-container');
 var $newButtonSelector = document.querySelector('.button-new-entry');
 var $newBackToHomePage = document.querySelector('.view-entry-only-page');
 $newButtonSelector.addEventListener('click', goToEntryPage);
 $newBackToHomePage.addEventListener('click', goBackToHomePage);
+
+var $modifyHeader = document.querySelector('.new-text-entry');
+var $modTitle = document.querySelector('#entry-title');
+var $modURL = document.querySelector('#photoURL');
+var $modParagraph = document.querySelector('#message');
