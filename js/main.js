@@ -121,13 +121,13 @@ function editEntry(object) {
   $setImageURL.setAttribute('src', object.url);
 
   var $getTitle = document.querySelector('#entry-title');
-  $getTitle.setAttribute('placeholder', object.title);
+  $getTitle.setAttribute('value', object.title);
 
   var $getURL = document.querySelector('#photoURL');
-  $getURL.setAttribute('placeholder', object.url);
+  $getURL.setAttribute('value', object.url);
 
   var $getParagraph = document.querySelector('#message');
-  $getParagraph.setAttribute('placeholder', object.message);
+  $getParagraph.textContent = object.message;
 }
 
 var $awaitClicks = document.querySelector('ul');
