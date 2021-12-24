@@ -89,7 +89,6 @@ function goBackToHomePage(event) {
 }
 function goToEntryPage(event) {
   switchViews('entry-form');
-
 }
 function switchViews(view) {
   for (var index = 0; index < $views.length; index++) {
@@ -100,22 +99,39 @@ function switchViews(view) {
     }
   }
 }
-function editEntry(event) {
+function clickEntry(event) {
   var $selectEntries = document.querySelectorAll('li');
   if (event.target.tagName === 'I') {
     var $closestIdiom = event.target.closest('LI');
     $closestIdiom = $closestIdiom.getAttribute('data-view');
-    for (var i = 0; i < $selectEntries.length; i++) {
+    for (var i = 0; i < data.entries.length; i++) {
       var retrieveCorrectList = $selectEntries[i].getAttribute('data-view');
       if (retrieveCorrectList === $closestIdiom) {
-        return;
+        var editObject = data.entries[i];
+        // console.log(editObject);
+        editEntry(editObject);
+        switchViews('entry-form');
       }
     }
   }
 }
+function editEntry(object) {
+  var $modifyHeader = document.querySelector('.new-text-entry');
+  $modifyHeader.textContent = 'Edit Entry';
+  $setImageURL.setAttribute('src', object.url);
+
+  var $getTitle = document.querySelector('#entry-title');
+  $getTitle.setAttribute('placeholder', object.title);
+
+  var $getURL = document.querySelector('#photoURL');
+  $getURL.setAttribute('placeholder', object.url);
+
+  var $getParagraph = document.querySelector('#message');
+  $getParagraph.setAttribute('placeholder', object.message);
+}
 
 var $awaitClicks = document.querySelector('ul');
-$awaitClicks.addEventListener('click', editEntry);
+$awaitClicks.addEventListener('click', clickEntry);
 // var $editEntry = document.querySelectorAll('fa-pencil-alt');
 
 var $selectParagraph = document.querySelector('.paragraph-intro');
