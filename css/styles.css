@@ -59,7 +59,7 @@
 }
 
 .button-wrapper-entry {
-  justify-content: end;
+  justify-content: space-between;
 }
 
 .button-submission-entry {
@@ -112,4 +112,10 @@ ul {
 
 .edit-icon-wrapper {
   flex-wrap: nowrap;
+}
+
+.delete-anchor {
+  margin-top: 25px;
+  color: rgb(202, 66, 24);
+  text-decoration: underline;
 }

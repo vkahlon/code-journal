@@ -143,6 +143,9 @@ function editEntry(object) {
   $modURL.setAttribute('value', object.url);
   $modParagraph.textContent = object.message;
   data.editing = object.entryID;
+  $activateDelete.textContent = 'Delete Entry';
+}
+function omitEntry() {
 }
 
 function resetFormToDefault(event) {
@@ -151,6 +154,7 @@ function resetFormToDefault(event) {
   $modTitle.setAttribute('value', '');
   $modURL.setAttribute('value', '');
   $modParagraph.textContent = '';
+  $activateDelete.textContent = '';
 }
 
 var $awaitClicks = document.querySelector('ul');
@@ -166,3 +170,5 @@ var $modifyHeader = document.querySelector('.new-text-entry');
 var $modTitle = document.querySelector('#entry-title');
 var $modURL = document.querySelector('#photoURL');
 var $modParagraph = document.querySelector('#message');
+var $activateDelete = document.querySelector('.delete-anchor');
+$activateDelete.addEventListener('click', omitEntry);
