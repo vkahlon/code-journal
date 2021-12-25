@@ -145,7 +145,19 @@ function editEntry(object) {
   data.editing = object.entryID;
   $activateDelete.textContent = 'Delete Entry';
 }
-function omitEntry() {
+function omitEntry(event) {
+  modalPopup(true);
+}
+function cancelChoice(event) {
+  modalPopup(false);
+}
+
+function modalPopup(view) {
+  if (view === true) {
+    $theChoice.classList.remove('hidden');
+  } else {
+    $theChoice.classList.add('hidden');
+  }
 }
 
 function resetFormToDefault(event) {
@@ -172,3 +184,7 @@ var $modURL = document.querySelector('#photoURL');
 var $modParagraph = document.querySelector('#message');
 var $activateDelete = document.querySelector('.delete-anchor');
 $activateDelete.addEventListener('click', omitEntry);
+
+var $theChoice = document.querySelector('.the-choice');
+var $cancelChoice = document.querySelector('.cancel');
+$cancelChoice.addEventListener('click', cancelChoice);
