@@ -145,11 +145,28 @@ function editEntry(object) {
   data.editing = object.entryID;
   $activateDelete.textContent = 'Delete Entry';
 }
-function omitEntry(event) {
+function omitEntryWindow(event) {
   modalPopup(true);
 }
 function cancelChoice(event) {
   modalPopup(false);
+}
+function deleteChoice(event) {
+  var $selectEntries = document.querySelectorAll('li');
+  var whichEntry = data.editing;
+  if (whichEntry !== null) {
+    for (var index = 0; index < data.entries.length; index++) {
+      var convertDeleteEntryToString = String(whichEntry);
+      var retrieveCorrectList = $selectEntries[index].getAttribute('data-view');
+      if (convertDeleteEntryToString === retrieveCorrectList) {
+        $selectEntries[index].remove();
+        data.entries.splice(index, 1);
+        data.editing = null;
+      }
+    }
+  }
+  modalPopup(false);
+  switchViews('entries');
 }
 
 function modalPopup(view) {
@@ -183,8 +200,10 @@ var $modTitle = document.querySelector('#entry-title');
 var $modURL = document.querySelector('#photoURL');
 var $modParagraph = document.querySelector('#message');
 var $activateDelete = document.querySelector('.delete-anchor');
-$activateDelete.addEventListener('click', omitEntry);
+$activateDelete.addEventListener('click', omitEntryWindow);
 
 var $theChoice = document.querySelector('.the-choice');
 var $cancelChoice = document.querySelector('.cancel');
 $cancelChoice.addEventListener('click', cancelChoice);
+var $deleteChoice = document.querySelector('.confirm');
+$deleteChoice.addEventListener('click', deleteChoice);
